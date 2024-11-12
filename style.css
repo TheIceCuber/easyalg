@@ -22,9 +22,11 @@
 }
 
 .logo-image {
-    width: 105px;
-    height: 45px;
-    display: block;
+    max-width: 105px;
+    max-height: 45px;
+    width: auto;
+    height: auto;
+    object-fit: contain;
 }
 
 /* Navbar styles */
