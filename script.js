@@ -57,7 +57,8 @@ let scrambleDisplayed = false; // Track if scramble is displayed
 let spacebarPressed = false;  // Flag to track spacebar press state
 let spacebarPressDuration = 0;
 let spacebarPressStartTime = 0;
-
+let timerElement = document.getElementById('timerDisplay');
+let timerStartTimeout;
 
 
 
@@ -161,20 +162,19 @@ function startTimer() {
 function stopTimer() {
     if (timerRunning) {
         clearInterval(timerInterval);
-        elapsedTime = Date.now() - startTime; // Calculate the elapsed time when stopping
+        elapsedTime = Date.now() - startTime;
         resetTimer();
         timerRunning = false;
-
         const solveData = {
-            scramble: currentScramble, // Use the latest scramble
-            caseName: currentCaseName, // Use the latest case name
+            scramble: currentScramble,
+            caseName: currentCaseName,
             time: elapsedTime,
             date: new Date().toISOString()
         };
-
-        saveSolveLocal(solveData); // Save the solve with the updated scramble and case
-        updateSolvesDisplay(JSON.parse(localStorage.getItem("cubeSolves"))); // Update the display of past solves
-        updateScramble(); // Generate a new scramble for the next solve
+        saveSolveLocal(solveData);
+        updateSolvesDisplay(JSON.parse(localStorage.getItem("cubeSolves")));
+        updateScramble();
+        timerElement.style.color = ''; // Reset to default color
     }
 }
 
@@ -242,15 +242,19 @@ document.body.addEventListener('keydown', function (e) {
 
 // Event listeners
 document.body.addEventListener('keydown', function (e) {
-    if (e.code === 'Space') {
+    if (e.code === 'Space' && !timerRunning) {
+        e.preventDefault();
         if (!spacebarPressed) {
             console.log("Spacebar pressed!");
             spacebarPressed = true;
-        }
-        e.preventDefault();
-        
-        if (spacebarPressStartTime === 0) {
+            timerElement.style.color = 'yellow';
             spacebarPressStartTime = Date.now();
+            
+            timerStartTimeout = setTimeout(() => {
+                if (spacebarPressed) {
+                    timerElement.style.color = 'green';
+                }
+            }, holdTime);
         }
     }
 });
@@ -258,30 +262,24 @@ document.body.addEventListener('keydown', function (e) {
 document.body.addEventListener('keyup', function (e) {
     if (e.code === 'Space') {
         e.preventDefault();
+        clearTimeout(timerStartTimeout);
         
         console.log("Spacebar released!");
         spacebarPressDuration = Date.now() - spacebarPressStartTime;
         console.log(`Spacebar held for ${spacebarPressDuration} ms`);
         
-        if (spacebarPressDuration >= holdTime) {
+        if (timerRunning) {
+            stopTimer();
+        } else if (spacebarPressDuration >= holdTime) {
             startTimer();
+        } else {
+            timerElement.style.color = ''; // Reset to default color
         }
         
         spacebarPressed = false;
         spacebarPressStartTime = 0;
     }
-});function updateScramble() {
-    const selectedCases = Array.from(document.querySelectorAll('.case-checkbox:checked'))
-        .map(checkbox => checkbox.value);
-    if (selectedCases.length > 0) {
-        const newScramble = getRandomScramble(selectedCases);
-        displayScramble(newScramble);
-        scrambleDisplayed = true; // Set scrambleDisplayed to true
-        currentCaseName = selectedCases[Math.floor(Math.random() * selectedCases.length)];
-        currentScramble = newScramble;
-    }
-}
-
+});
 
 
 
