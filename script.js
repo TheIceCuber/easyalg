@@ -252,12 +252,10 @@ document.body.addEventListener('keydown', function (e) {
     if (e.code === 'Space') {
         if (!spacebarPressed) {
             console.log("Spacebar pressed!");
-            spacebarPressed = true; // Set flag to prevent repeated logs during hold
+            spacebarPressed = true;
         }
-
-        e.preventDefault(); // Prevent default behavior (scrolling)
+        e.preventDefault();
         
-        // Store the time when the spacebar is pressed
         if (spacebarPressStartTime === 0) {
             spacebarPressStartTime = Date.now();
         }
@@ -266,20 +264,16 @@ document.body.addEventListener('keydown', function (e) {
 
 document.body.addEventListener('keyup', function (e) {
     if (e.code === 'Space') {
-        e.preventDefault(); // Prevent default behavior (scrolling)
+        e.preventDefault();
         
         console.log("Spacebar released!");
-
-        // Calculate how long the spacebar was held down
         spacebarPressDuration = Date.now() - spacebarPressStartTime;
         console.log(`Spacebar held for ${spacebarPressDuration} ms`);
-
-        // Check if the spacebar was held for the required duration
-        if (spacebarPressDuration >= 1000) { // Example: 1 second hold to start timer
+        
+        if (spacebarPressDuration >= holdTime) {
             startTimer();
         }
-
-        // Reset the spacebarPressed flag when the key is released
+        
         spacebarPressed = false;
         spacebarPressStartTime = 0;
     }
