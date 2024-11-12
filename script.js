@@ -135,25 +135,22 @@ document.getElementById('okButton').addEventListener('click', confirmSelection);
 
 
 function startTimer() {
-    // Only start the timer if it's not already running
+    console.log("startTimer called");
+    console.log("selectedCases:", document.querySelectorAll('.case-checkbox:checked').length);
+    console.log("okButtonClicked:", okButtonClicked);
+    console.log("scrambleDisplayed:", scrambleDisplayed);
+
     if (!timerRunning) {
         const selectedCases = document.querySelectorAll('.case-checkbox:checked');
-
-        // Check if conditions are met to start the timer
         if (selectedCases.length > 0 && okButtonClicked && scrambleDisplayed) {
-            startTime = Date.now(); // Initialize the correct start time here
-            timerRunning = true; // Flag that timer is running
-            
-            // Change timer color to yellow (indicating it's started)
+            startTime = Date.now();
+            timerRunning = true;
             document.getElementById('timerDisplay').style.color = 'yellow';
-
-            // Start the timer
             timerInterval = setInterval(() => {
-                const elapsed = Date.now() - startTime; // Correct calculation using startTime
-                const seconds = (elapsed / 1000).toFixed(2); // Format elapsed time as seconds
-                document.getElementById('timerDisplay').textContent = seconds; // Update display
-            }, 10); // Update every 10ms for smooth timer
-
+                const elapsed = Date.now() - startTime;
+                const seconds = (elapsed / 1000).toFixed(2);
+                document.getElementById('timerDisplay').textContent = seconds;
+            }, 10);
             console.log("Timer started");
         }
     }
@@ -212,19 +209,14 @@ function resetTimer() {
 function updateScramble() {
     const selectedCases = Array.from(document.querySelectorAll('.case-checkbox:checked'))
         .map(checkbox => checkbox.value);
-
-
     if (selectedCases.length > 0) {
         const newScramble = getRandomScramble(selectedCases);
-        displayScramble(newScramble); // Display the new scramble for the next solve
-
-
-        // Update `currentCaseName` based on the selected case
+        displayScramble(newScramble);
+        scrambleDisplayed = true; // Set scrambleDisplayed to true
         currentCaseName = selectedCases[Math.floor(Math.random() * selectedCases.length)];
-        currentScramble = newScramble; // Update current scramble consistently
+        currentScramble = newScramble;
     }
 }
-
 
 
 
@@ -248,6 +240,7 @@ document.body.addEventListener('keydown', function (e) {
 
 
 
+// Event listeners
 document.body.addEventListener('keydown', function (e) {
     if (e.code === 'Space') {
         if (!spacebarPressed) {
@@ -277,8 +270,17 @@ document.body.addEventListener('keyup', function (e) {
         spacebarPressed = false;
         spacebarPressStartTime = 0;
     }
-});
-
+});function updateScramble() {
+    const selectedCases = Array.from(document.querySelectorAll('.case-checkbox:checked'))
+        .map(checkbox => checkbox.value);
+    if (selectedCases.length > 0) {
+        const newScramble = getRandomScramble(selectedCases);
+        displayScramble(newScramble);
+        scrambleDisplayed = true; // Set scrambleDisplayed to true
+        currentCaseName = selectedCases[Math.floor(Math.random() * selectedCases.length)];
+        currentScramble = newScramble;
+    }
+}
 
 
 
@@ -286,6 +288,7 @@ document.body.addEventListener('keyup', function (e) {
 // Listen for the OK button click
 document.getElementById('okButton').addEventListener('click', function() {
     okButtonClicked = true;
+    confirmSelection();
 });
 
 
