@@ -60,8 +60,7 @@ let spacebarPressStartTime = 0;
 let timerElement = document.getElementById('timerDisplay');
 let timerStartTimeout;
 let holdTimeReached = false;
-
-
+let casesSelected = false;
 
 
 
@@ -139,7 +138,7 @@ document.getElementById('okButton').addEventListener('click', confirmSelection);
 
 
 function startTimer() {
-    if (!timerRunning) {
+    if (!timerRunning && okButtonClicked && casesSelected) {
         startTime = Date.now();
         timerRunning = true;
         timerInterval = setInterval(() => {
@@ -148,6 +147,8 @@ function startTimer() {
             timerElement.textContent = seconds;
         }, 10);
         console.log("Timer started");
+    } else if (!okButtonClicked || !casesSelected) {
+        console.log("Cannot start timer: OK button not clicked or no cases selected");
     }
 }
 
@@ -256,6 +257,7 @@ document.body.addEventListener('keydown', function (e) {
     }
 });
 
+// Modify the keyup event listener
 document.body.addEventListener('keyup', function (e) {
     if (e.code === 'Space') {
         e.preventDefault();
@@ -265,8 +267,10 @@ document.body.addEventListener('keyup', function (e) {
         spacebarPressDuration = Date.now() - spacebarPressStartTime;
         console.log(`Spacebar held for ${spacebarPressDuration} ms`);
         
-        if (!timerRunning && holdTimeReached) {
+        if (!timerRunning && holdTimeReached && okButtonClicked && casesSelected) {
             startTimer();
+        } else if (!okButtonClicked || !casesSelected) {
+            console.log("Cannot start timer: OK button not clicked or no cases selected");
         }
         
         spacebarPressed = false;
@@ -281,12 +285,22 @@ document.body.addEventListener('keyup', function (e) {
 
 
 // Listen for the OK button click
+// Modify the OK button click event listener
 document.getElementById('okButton').addEventListener('click', function() {
     okButtonClicked = true;
+    updateCasesSelected();
     confirmSelection();
 });
 
+// Add this function to check if cases are selected
+function updateCasesSelected() {
+    casesSelected = document.querySelectorAll('.case-checkbox:checked').length > 0;
+}
 
+// Add event listeners to checkboxes to update casesSelected
+document.querySelectorAll('.case-checkbox').forEach(checkbox => {
+    checkbox.addEventListener('change', updateCasesSelected);
+});
 
 
 function confirmSelection() {
