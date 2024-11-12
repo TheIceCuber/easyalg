@@ -486,9 +486,10 @@ document.querySelectorAll('.theme-option').forEach(option => {
 
 // Load saved theme from localStorage if available
 document.addEventListener('DOMContentLoaded', () => {
-    const savedTheme = localStorage.getItem('selectedTheme') || 'light-mode';
-    document.body.classList.add(savedTheme);
+    const theme = localStorage.getItem('selectedTheme') || 'defaultTheme';
+    document.body.className = theme; // Or however you're applying the theme
 });
+
 
 
 // settings
