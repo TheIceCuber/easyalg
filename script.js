@@ -241,11 +241,15 @@ document.body.addEventListener('keydown', function (e) {
             if (!spacebarPressed) {
                 console.log("Spacebar pressed!");
                 spacebarPressed = true;
-                timerElement.style.color = 'yellow';
+                if (!okButtonClicked) {
+                    timerElement.style.color = 'red';
+                } else {
+                    timerElement.style.color = 'yellow';
+                }
                 spacebarPressStartTime = Date.now();
                 
                 timerStartTimeout = setTimeout(() => {
-                    if (spacebarPressed) {
+                    if (spacebarPressed && okButtonClicked) {
                         timerElement.style.color = 'green';
                         holdTimeReached = true;
                     }
@@ -257,7 +261,6 @@ document.body.addEventListener('keydown', function (e) {
     }
 });
 
-// Modify the keyup event listener
 document.body.addEventListener('keyup', function (e) {
     if (e.code === 'Space') {
         e.preventDefault();
@@ -269,15 +272,19 @@ document.body.addEventListener('keyup', function (e) {
         
         if (!timerRunning && holdTimeReached && okButtonClicked && casesSelected) {
             startTimer();
-        } else if (!okButtonClicked || !casesSelected) {
-            console.log("Cannot start timer: OK button not clicked or no cases selected");
+        } else if (!okButtonClicked) {
+            console.log("Cannot start timer: OK button not clicked");
+            timerElement.style.color = 'red';
+        } else if (!casesSelected) {
+            console.log("Cannot start timer: No cases selected");
+            timerElement.style.color = '';
         }
         
         spacebarPressed = false;
         spacebarPressStartTime = 0;
         holdTimeReached = false;
         
-        if (!timerRunning) {
+        if (!timerRunning && okButtonClicked) {
             timerElement.style.color = ''; // Reset to default color
         }
     }
