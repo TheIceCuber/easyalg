@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@1.35.7/dist/umd/supabase.min.js"></script>
+</head>
+        <body>
+            <header class="header">
+                <a href="index.html" class="logo">Logo</a>
+            
+                <nav class="navbar">
+                    <a href="trainer.html">Algorithm Trainer</a>
+                    <a href="#">How to Use</a>
+                    <a href="#">About</a>
+                   
+            
+                    <!-- Theme dropdown -->
+                    <div class="dropdown">
+                        <a href="#" class="dropbtn">Themes</a>
+                        <div class="dropdown-content">
+                            <a href="#" class="theme-option" data-theme="light-mode">Light Mode</a>
+                            <a href="#" class="theme-option" data-theme="dark-mode">Dark Mode</a>
+                            <a href="#" class="theme-option" data-theme="cyan-black-mode">Cyan/Black Mode</a>
+                        </div>
+                    </div>
+                </nav>
+            </header>
+            
+            <br><br><br><br>
+            <h1 class="scramble-options">Scramble Options</h1>
+            <p class="selected-cases">Selected Cases: <span id="selected-count">0</span></p>
+            
+            <div id="case-grid">
+                <div class="subset">
+                    <h3 class="subset-header">H Cases</h3>
+                    <div class="subset-content">
+                <div class="case">
+                    <input type="checkbox" id="CLL-H-1" value="CLL-H-1" class="case-checkbox">
+                    
+                    <label for="CLL-H-1">
+                        <img src="alg-pics/CLL H Cases/CLL H 1.png" alt="CLL-H-1 Case">
+                        <p>CLL H-1</p>
+                    </label>
+                </div>
+                <div class="case">
+                    <input type="checkbox" id="CLL-H-2" value="CLL-H-2" class="case-checkbox">
+                    <label for="CLL-H-2">
+                        <img src="alg-pics/CLL H Cases/CLL H 2.png" alt="CLL-H-2 Case">
+                        <p>CLL H-2</p>
+                    </label>
+                </div>
+             <!--Start Case-->
+                <div class="case">
+                    <input type="checkbox" id="CLL-H-3" value="CLL-H-3" class="case-checkbox">
+                    <label for="CLL-H-3">
+                        <img src="alg-pics/CLL H Cases/CLL H 3.png" alt="CLL-H-3 Case">
+                        <p>CLL H-3</p>
+                    </label>
+                </div>
+                <!-- Start Case-->
+                <div class="case">
+                    <input type="checkbox" id="CLL-H-4" value="CLL-H-4" class="case-checkbox">
+                    <label for="CLL-H-4">
+                        <img src="alg-pics/CLL H Cases/CLL H 4.png" alt="CLL-H-4">
+                        <p>CLL H-4</p>
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="subset">
+            <h3 class="subset-header">Pi Cases</h3>
+            <div class="subset-content">
+                      <!-- Start Case-->
+                      <div class="case">
+                        <input type="checkbox" id="CLL-Pi-1" value="CLL-Pi-1" class="case-checkbox">
+                        <label for="CLL-Pi-1">
+                            <img src="alg-pics/CLL Pi Cases/CLL Pi 1.png" alt="CLL-Pi-1">
+                            <p>CLL Pi-1</p>
+                        </label>
+                    </div>
+                          <!-- Start Case-->
+                <div class="case">
+                    <input type="checkbox" id="CLL-Pi-2" value="CLL-Pi-2" class="case-checkbox">
+                    <label for="CLL-Pi-2">
+                        <img src="alg-pics/CLL Pi Cases/CLL Pi 2.png" alt="CLL-Pi-2">
+                        <p>CLL Pi-2</p>
+                    </label>
+                </div>
+                      <!-- Start Case-->
+                      <div class="case">
+                        <input type="checkbox" id="CLL-Pi-3" value="CLL-Pi-3" class="case-checkbox">
+                        <label for="CLL-Pi-3">
+                            <img src="alg-pics/CLL Pi Cases/CLL Pi 3.png" alt="CLL-Pi-3">
+                            <p>CLL Pi-3</p>
+                        </label>
+                    </div>
+                          <!-- Start Case-->
+                <div class="case">
+                    <input type="checkbox" id="CLL-Pi-4" value="CLL-Pi-4" class="case-checkbox">
+                    <label for="CLL-Pi-4">
+                        <img src="alg-pics/CLL Pi Cases/CLL Pi 4.png" alt="CLL-Pi-4">
+                        <p>CLL Pi-4</p>
+                    </label>
+                </div>
+                      <!-- Start Case-->
+                      <div class="case">
+                        <input type="checkbox" id="CLL-Pi-5" value="CLL-Pi-5" class="case-checkbox">
+                        <label for="CLL-Pi-5">
+                            <img src="alg-pics/CLL Pi Cases/CLL Pi 5.png" alt="CLL-Pi-5">
+                            <p>CLL Pi-5</p>
+                        </label>
+                    </div>
+                          <!-- Start Case-->
+                <div class="case">
+                    <input type="checkbox" id="CLL-Pi-6" value="CLL-Pi-6" class="case-checkbox">
+                    <label for="CLL-Pi-6">
+                        <img src="alg-pics/CLL Pi Cases/CLL Pi 6.png" alt="CLL-Pi-6">
+                        <p>CLL Pi-6</p>
+                    </label>
+                </div>
+                </div>
+        </div>      
+        <div class="subset">
+            <h3 class="subset-header">U Cases</h3>
+            <div class="subset-content">
+                      <!-- Start Case-->
+                      <div class="case">
+                        <input type="checkbox" id="CLL-U-1" value="CLL-U-1" class="case-checkbox">
+                        <label for="CLL-U-1">
+                            <img src="alg-pics/CLL U Cases/CLL U 1.png" alt="CLL-U-1">
+                            <p>CLL U-1</p>
+                        </label>
+                    </div>
+                          <!-- Start Case-->
+                <div class="case">
+                    <input type="checkbox" id="CLL-U-2" value="CLL-U-2" class="case-checkbox">
+                    <label for="CLL-U-2">
+                        <img src="alg-pics/CLL U Cases/CLL U 2.png" alt="CLL-U-2">
+                        <p>CLL U-2</p>
+                    </label>
+                </div>
+                      <!-- Start Case-->
+                      <div class="case">
+                        <input type="checkbox" id="CLL-U-3" value="CLL-U-3" class="case-checkbox">
+                        <label for="CLL-U-3">
+                            <img src="alg-pics/CLL U Cases/CLL U 3.png" alt="CLL-U-3">
+                            <p>CLL U-3</p>
+                        </label>
+                    </div>
+                          <!-- Start Case-->
+                <div class="case">
+                    <input type="checkbox" id="CLL-U-4" value="CLL-U-4" class="case-checkbox">
+                    <label for="CLL-U-4">
+                        <img src="alg-pics/CLL U Cases/CLL U 4.png" alt="CLL-U-4">
+                        <p>CLL U-4</p>
+                    </label>
+                </div>
+                      <!-- Start Case-->
+                      <div class="case">
+                        <input type="checkbox" id="CLL-U-5" value="CLL-U-5" class="case-checkbox">
+                        <label for="CLL-U-5">
+                            <img src="alg-pics/CLL U Cases/CLL U 5.png" alt="CLL-U-5">
+                            <p>CLL U-5</p>
+                        </label>
+                    </div>
+                          <!-- Start Case-->
+                <div class="case">
+                    <input type="checkbox" id="CLL-U-6" value="CLL-U-6" class="case-checkbox">
+                    <label for="CLL-U-6">
+                        <img src="alg-pics/CLL U Cases/CLL U 6.png" alt="CLL-U-6">
+                        <p>CLL U-6</p>
+                    </label>
+                </div>
+                </div>
+                </div>   <div class="subset">
+                    <h3 class="subset-header">T Cases</h3>
+                    <div class="subset-content">
+                      <!-- Start Case-->
+                      <div class="case">
+                        <input type="checkbox" id="CLL-T-1" value="CLL-T-1" class="case-checkbox">
+                        <label for="CLL-T-1">
+                            <img src="alg-pics/CLL T Cases/CLL T 1.png" alt="CLL-T-1">
+                            <p>CLL T-1</p>
+                        </label>
+                    </div>
+                          <!-- Start Case-->
+                <div class="case">
+                    <input type="checkbox" id="CLL-T-2" value="CLL-T-2" class="case-checkbox">
+                    <label for="CLL-T-2">
+                        <img src="alg-pics/CLL T Cases/CLL T 2.png" alt="CLL-T-2">
+                        <p>CLL T-2</p>
+                    </label>
+                </div>
+                      <!-- Start Case-->
+                      <div class="case">
+                        <input type="checkbox" id="CLL-T-3" value="CLL-T-3" class="case-checkbox">
+                        <label for="CLL-T-3">
+                            <img src="alg-pics/CLL T Cases/CLL T 3.png" alt="CLL-T-3">
+                            <p>CLL T-3</p>
+                        </label>
+                    </div>
+                          <!-- Start Case-->
+                <div class="case">
+                    <input type="checkbox" id="CLL-T-4" value="CLL-T-4" class="case-checkbox">
+                    <label for="CLL-T-4">
+                        <img src="alg-pics/CLL T Cases/CLL T 4.png" alt="CLL-T-4">
+                        <p>CLL T-4</p>
+                    </label>
+                </div>
+                      <!-- Start Case-->
+                      <div class="case">
+                        <input type="checkbox" id="CLL-T-5" value="CLL-T-5" class="case-checkbox">
+                        <label for="CLL-T-5">
+                            <img src="alg-pics/CLL T Cases/CLL T 5.png" alt="CLL-T-5">
+                            <p>CLL T-5</p>
+                        </label>
+                    </div>
+                          <!-- Start Case-->
+                <div class="case">
+                    <input type="checkbox" id="CLL-T-6" value="CLL-T-6" class="case-checkbox">
+                    <label for="CLL-T-6">
+                        <img src="alg-pics/CLL T Cases/CLL T 6.png" alt="CLL-T-6">
+                        <p>CLL T-6</p>
+                    </label>
+                </div>
+                </div>
+            </div>
+            <div class="subset">
+                <h3 class="subset-header">L Cases</h3>
+                <div class="subset-content">
+                      <!-- Start Case-->
+                      <div class="case">
+                        <input type="checkbox" id="CLL-L-1" value="CLL-L-1" class="case-checkbox">
+                        <label for="CLL-L-1">
+                            <img src="alg-pics/CLL L Cases/CLL L 1.png" alt="CLL-L-1">
+                            <p>CLL-L-1</p>
+                        </label>
+                    </div>
+                          <!-- Start Case-->
+                <div class="case">
+                    <input type="checkbox" id="CLL-L-2" value="CLL-L-2" class="case-checkbox">
+                    <label for="CLL-L-2">
+                        <img src="alg-pics/CLL L Cases/CLL L 2.png" alt="CLL-L-2">
+                        <p>CLL L-2</p>
+                    </label>
+                </div>
+                      <!-- Start Case-->
+                      <div class="case">
+                        <input type="checkbox" id="CLL-L-3" value="CLL-L-3" class="case-checkbox">
+                        <label for="CLL-L-3">
+                            <img src="alg-pics/CLL L Cases/CLL L 3.png" alt="CLL-L-3">
+                            <p>CLL L-3</p>
+                        </label>
+                    </div>
+                          <!-- Start Case-->
+                <div class="case">
+                    <input type="checkbox" id="CLL-L-4" value="CLL-L-4" class="case-checkbox">
+                    <label for="CLL-L-4">
+                        <img src="alg-pics/CLL L Cases/CLL L 4.png" alt="CLL-L-4">
+                        <p>CLL L-4</p>
+                    </label>
+                </div>
+                      <!-- Start Case-->
+                      <div class="case">
+                        <input type="checkbox" id="CLL-L-5 " value="CLL-L-5 " class="case-checkbox">
+                        <label for="CLL-L-5 ">
+                            <img src="alg-pics/CLL L Cases/CLL L 5.png" alt="CLL-L-5 ">
+                            <p>CLL L-5 </p>
+                        </label>
+                    </div>
+                          <!-- Start Case-->
+                <div class="case">
+                    <input type="checkbox" id="CLL-L-6" value="CLL-L-6" class="case-checkbox">
+                    <label for="CLL-L-6">
+                        <img src="alg-pics/CLL L Cases/CLL L 6.png" alt="CLL-L-6">
+                        <p>CLL L-6</p>
+                    </label>
+                </div>
+                </div>
+            </div>
+            <div class="subset">
+                <h3 class="subset-header">S Cases</h3>
+                <div class="subset-content">
+                      <!-- Start Case-->
+                      <div class="case">
+                        <input type="checkbox" id="CLL-SUNE-1" value="CLL-SUNE-1" class="case-checkbox">
+                        <label for="CLL-SUNE-1">
+                            <img src="alg-pics/CLL Sune Cases/CLL Sune 1.png" alt="CLL-SUNE-1">
+                            <p>CLL Sune-1</p>
+                        </label>
+                    </div>
+                          <!-- Start Case-->
+                <div class="case">
+                    <input type="checkbox" id="CLL-SUNE-2" value="CLL-SUNE-2" class="case-checkbox">
+                    <label for="CLL-SUNE-2">
+                        <img src="alg-pics/CLL Sune Cases/CLL Sune 2.png" alt="CLL-SUNE-2">
+                        <p>CLL Sune-2</p>
+                    </label>
+                </div>
+                      <!-- Start Case-->
+                      <div class="case">
+                        <input type="checkbox" id="CLL-SUNE-3" value="CLL-SUNE-3" class="case-checkbox">
+                        <label for="CLL-SUNE-3">
+                            <img src="alg-pics/CLL Sune Cases/CLL Sune 3.png" alt="CLL-SUNE-3">
+                            <p>CLL Sune-3</p>
+                        </label>
+                    </div>
+                          <!-- Start Case-->
+                <div class="case">
+                    <input type="checkbox" id="CLL-SUNE-4" value="CLL-SUNE-4" class="case-checkbox">
+                    <label for="CLL-SUNE-4">
+                        <img src="alg-pics/CLL Sune Cases/CLL Sune 4.png" alt="CLL-SUNE-4">
+                        <p>CLL Sune-4</p>
+                    </label>
+                </div>
+                      <!-- Start Case-->
+                      <div class="case">
+                        <input type="checkbox" id="CLL-SUNE-5" value="CLL-SUNE-5" class="case-checkbox">
+                        <label for="CLL-SUNE-5">
+                            <img src="alg-pics/CLL Sune Cases/CLL Sune 5.png" alt="CLL-SUNE-5">
+                            <p>CLL Sune-5</p>
+                        </label>
+                    </div>
+                          <!-- Start Case-->
+                <div class="case">
+                    <input type="checkbox" id="CLL-SUNE-6" value="CLL-SUNE-6" class="case-checkbox">
+                    <label for="CLL-SUNE-6">
+                        <img src="alg-pics/CLL Sune Cases/CLL Sune 6.png" alt="CLL-SUNE-6">
+                        <p>CLL Sune-6</p>
+                    </label>
+                </div>
+                </div>
+            </div>
+            <div class="subset">
+                <h3 class="subset-header">AS Cases</h3>
+                <div class="subset-content">
+                      <!-- Start Case-->
+                      <div class="case">
+                        <input type="checkbox" id="CLL-AS-1" value="CLL-AS-1" class="case-checkbox">
+                        <label for="CLL-AS-1">
+                            <img src="alg-pics/CLL AS Cases/CLL AS 1.png" alt="CLL-AS-1">
+                            <p>CLL AS-1</p>
+                        </label>
+                    </div>
+                          <!-- Start Case-->
+                <div class="case">
+                    <input type="checkbox" id="CLL-AS-2" value="CLL-AS-2" class="case-checkbox">
+                    <label for="CLL-AS-2">
+                        <img src="alg-pics/CLL AS Cases/CLL AS 2.png" alt="CLL-AS-2">
+                        <p>CLL AS-2</p>
+                    </label>
+                </div>
+                      <!-- Start Case-->
+                      <div class="case">
+                        <input type="checkbox" id="CLL-AS-3" value="CLL-AS-3" class="case-checkbox">
+                        <label for="CLL-AS-3">
+                            <img src="alg-pics/CLL AS Cases/CLL AS 3.png" alt="CLL-AS-3">
+                            <p>CLL AS-3</p>
+                        </label>
+                    </div>
+                          <!-- Start Case-->
+                <div class="case">
+                    <input type="checkbox" id="CLL-AS-4" value="CLL-AS-4" class="case-checkbox">
+                    <label for="CLL-AS-4">
+                        <img src="alg-pics/CLL AS Cases/CLL AS 4.png" alt="CLL-AS-4">
+                        <p>CLL AS-4</p>
+                    </label>
+                </div>
+                      <!-- Start Case-->
+                      <div class="case">
+                        <input type="checkbox" id="CLL-AS-5" value="CLL-AS-5" class="case-checkbox">
+                        <label for="CLL-AS-5">
+                            <img src="alg-pics/CLL AS Cases/CLL AS 5.png" alt="CLL-AS-5">
+                            <p>CLL AS-5</p>
+                        </label>
+                    </div>
+                          <!-- Start Case-->
+                <div class="case">
+                    <input type="checkbox" id="CLL-AS-6" value="CLL-AS-6" class="case-checkbox">
+                    <label for="CLL-AS-6">
+                        <img src="alg-pics/CLL AS Cases/CLL AS 6.png" alt="CLL-AS-6">
+                        <p>CLL AS-6</p>
+                    </label>
+                </div>
+                </div>
+            </div>
+            </div>
+            
+            <div id="scramble-options-buttons">
+                <button onclick="selectAll()">Full</button>
+                <button onclick="clearSelection()">Clear</button>
+                <button id="okButton">Ok</button>
+                <button onclick="clearSolves()">Clear Solves</button>
+                <button id="settingsButton">Settings</button> <!-- Settings button -->
+            </div>
+            
+            <!-- Settings popup modal, initially collapsed -->
+            <div id="settingsPopup" class="popup" style="display:none;">
+                <div class="popup-content">
+                    <h2>Settings</h2>
+                    <label for="holdTime">Hold Time (ms):</label>
+                    <input type="number" id="holdTime" value="500" min="100" step="100">
+                    <button onclick="saveSettings()">Save</button>
+                    <button onclick="closeSettings()">Cancel</button>
+                </div>
+            </div>
+            
+            
+            <br><br><br><br><br>
+            <div id="scramble-display">Scramble: </div>
+            <br><br><br><br><br>
+            <div id="timer-container">
+                <div id="timerDisplay" class="timer-display" style="font-size: 100px;">0:00</div>
+            </div>
+
+            <h3 class="solves-h4">Past Solves:</h3>     
+    <div id="solvesList"></div>
+  
+ 
+    
+             
+        
+            
+
+
+            <script src="script.js" defer></script>
+
+
+        </body>
+       
+</html>

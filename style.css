@@ -1,0 +1,465 @@
+@import url('https://fonts.googleapis.com/css2?family=Jura:wght@300..700&family=Quicksand:wght@300..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Itim&family=Jura:wght@300..700&family=Quicksand:wght@300..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Maven+Pro:wght@400..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Sour+Gummy:ital,wght@0,100..900;1,100..900&display=swap');
+
+
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 65px;
+    background: lightblue;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100; 
+}
+
+.logo {
+    font-size: 45px;
+    color: black;
+    text-decoration: none;
+    font-weight: 700;
+    font-family: "Jura", sans-serif;
+}
+
+/* Navbar styles */
+.navbar a {
+    position: relative;
+    font-size: 27px;
+    color: black;
+    font-weight: 500;
+    text-decoration: none;
+    margin-left: 60px;
+    font-family: "Itim", cursive;
+    left: -165px;
+}
+
+.navbar a::before {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 10px;
+    width: 0;
+    height: 2px;
+    background: black;
+    transition: .3s;
+}
+
+.navbar a:hover::before {
+    width: 100%;
+}
+
+/* Dropdown styles */
+.dropdown {
+    position: relative;
+    display: inline-block;
+    margin-left: 65px;
+}
+
+.dropbtn {
+    font-size: 27px;
+    color: black;
+    font-weight: 500;
+    text-decoration: none;
+    font-family: "Itim", cursive;
+    cursor: pointer;
+}
+
+/* Dropdown content (hidden by default) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: max-content; /* Dropdown width will be based on content */
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    left: -200px; /* Align the left side of the dropdown to the left side of the parent dropdown */
+    top: 35px; /* Keep the dropdown aligned to the top of the button */
+    padding: 10px 100px; /* Add padding to ensure the text fits well within the background */
+    border-radius: 20px;
+}
+
+/* Hover state to show dropdown */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+
+
+
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #111;
+    color: #00ffff;
+    text-align: center;
+}
+
+#case-grid {
+    display: flex;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); /* Adjusts each column width */
+    padding: 20px;
+    margin-top: -50px;
+    gap: 65px; /* Gap relative to the width of the parent container (relative to the screen) */
+    text-align: center; /* Ensure grid items are centered */
+}
+
+
+.case {
+    background-color: #222;
+    border: 1px solid #555;
+    padding: 10px;
+    margin-bottom: 7px;
+    right: 10px;
+    border-radius: 10px;
+    text-align: center;
+    width: 107px;
+    height: 131px;
+    gap: 5px;
+    align-items: center;
+    justify-content: center;
+}
+
+.case img {
+    width: 100px;
+    height: 100px;
+    -webkit-user-drag: none;
+    
+}
+
+.case-checkbox {
+    display: none;
+}
+
+.case-checkbox:checked + label {
+    position: relative;
+}
+
+.case-checkbox:checked + label::before {
+    content: "";
+    position: absolute;
+    top: -98px; /* Adjust position */
+    left: -16px; /* Adjust position */
+    right: -12px; /* Adjust width */
+    bottom: -5px; /* Adjust height */
+    border: 2px solid #00ffff;
+    border-radius: 10px; /* Optional, to match the rounded look */
+    pointer-events: none; /* Prevent interaction */
+}
+
+
+
+#timer-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.timer-display {
+    font-size: 2em;
+    color: black;
+    background-color: #add8e6;
+    padding: 20px;
+    border-radius: 10px;
+    width: 350px;
+    text-align: center;
+    font-family: Arial, sans-serif;
+}
+
+#scramble-display {
+    font-size: 3em;
+    color: #add8e6;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+
+
+@keyframes bounce {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+}
+
+button {
+    font-size: 1.2em;
+    color: #111;
+    background-color: #add8e6;
+    border: 2px solid #555;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: "Itim", cursive;
+    font-weight: 600;
+    text-align: center;
+}
+
+button:hover {
+    background-color: #00ffff;
+    color: black;
+    border-color: #00b3b3;
+}
+
+button:active {
+    animation: bounce 0.2s ease;
+}
+
+/* Button container for layout */
+#scramble-options-buttons {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+.solves-h4 {
+    color:#00ffff;
+    font-family: "Maven Pro", sans-serif;
+    font-size: 40px;
+    font-weight: 450;
+    text-align: center;
+}
+
+/* Style for the solves list container */
+#solvesList {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 30px;
+    padding: 10px; /* Add padding around the list */
+    background-color: darkcyan; /* Set a light background color */
+    max-width: 600px; /* Limit the width */
+    margin: 0 auto; /* Center the list */
+    border-radius: 10px; /* Round the corners */
+}
+
+/* Style for each solve entry */
+#solvesList div {
+    display: flex; /* Use flexbox for aligning items */
+    justify-content: space-between; /* Space out the time and scramble text */
+    padding: 10px; /* Add padding inside each row */
+    margin-bottom: 10px; /* Add space between each entry */
+    border: 1px solid #ccc; /* Add a border around each entry */
+    border-radius: 5px; /* Round the corners of the solve rows */
+    background-color: lightgray; /* Set background color to white */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Add a subtle shadow effect */
+}
+
+/* Hover effect for each row */
+#solvesList div:hover {
+    background-color: #f8f8f8; /* Change background on hover */
+    border-color: #add8e6; /* Change border color on hover */
+}
+
+/* Style the "No solves available" message */
+#solvesList .no-solves-message {
+    text-align: center; /* Center the text */
+    font-size: 1.2em; /* Make the text a bit larger */
+    color: #888; /* Set the color to a light grey */
+}
+
+/* delete button*/
+
+/* Style for each solve entry */
+#solvesList div {
+    display: flex; /* Use flexbox for aligning items */
+    justify-content: space-between; /* Space out the time and scramble text */
+    padding: 10px; /* Add padding inside each row */
+    margin-bottom: 10px; /* Add space between each entry */
+    border: 1px solid #ccc; /* Add a border around each entry */
+    border-radius: 5px; /* Round the corners of the solve rows */
+    background-color: lightgray; /* Set background color to white */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Add a subtle shadow effect */
+}
+
+/* Style for delete button */
+.delete-btn {
+    background-color: #f44336; /* Red background for delete button */
+    color: white; /* White text */
+    border: none;
+    border-radius: 50%; /* Make the button round */
+    width: 30px; /* Set the button width */
+    height: 30px; /* Set the button height */
+    font-size: 16px; /* Set font size for the "X" */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer; /* Change cursor to pointer */
+    transition: background-color 0.3s ease;
+}
+
+/* Hover effect for delete button */
+.delete-btn:hover {
+    background-color: #d32f2f; /* Darker red when hovered */
+}
+
+/* Display "Delete Solves" text on hover */
+.delete-btn:hover::after {
+    content: " Delete Solve"; /* Show text when hovered */
+    position: absolute;
+    top: -30px; /* Position above the button */
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #333;
+    color: white;
+    font-size: 12px;
+    padding: 5px;
+    border-radius: 5px;
+    white-space: nowrap;
+}
+
+/* Make sure the delete button text doesn't overlap with the solve entry */
+.solve-entry {
+    position: relative;
+}
+
+
+.scramble-options {
+    font-family: "Sour Gummy", sans-serif;
+    font-size: 35px;
+    margin-bottom: 0px;
+}
+
+.selected-cases  {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 30px;
+    font-weight: light;
+}
+
+/* case dropdown */
+
+.subset {
+    margin: 0 auto; /* Center the subset container horizontally on the page */
+    text-align: center; /* Center the text inside the container */
+    width: fit-content; /* Allow the container width to wrap around its content */
+}
+
+/* Style the subset header */
+.subset-header {
+    cursor: pointer;
+    padding: 15px;
+    background-color: rgb(217, 215, 215);
+    border-radius: 5px;
+    white-space: nowrap;
+    margin-bottom: 5px;
+    width: 100%; /* Make the header take up full width of its parent container */
+    justify-content: center; /* Center the content horizontally */
+    align-items: center; /* Vertically center the content */
+    box-sizing: border-box; /* Ensure padding is accounted for in width */
+    font-size: 165%;
+}
+
+
+
+/* Ensure subset-content takes up full width and has padding for better clickability */
+.subset-content {
+    margin: 0; /* Remove any margin */
+    display: none;
+    width: 100%; /* Make sure content takes up full width */
+    box-sizing: border-box;
+    flex-direction: column;
+    padding: 10px;
+    transition: all 0.3s ease;
+    overflow: hidden; /* Optional: Hide overflowing content */
+}
+/* Style for expanded content, optional */
+.subset-content.expanded {
+    display: block;
+}
+
+/* themes */
+
+/* Light Mode */
+.light-mode {
+    --bg-color: #ffffff;
+    --text-color: #008A8A;
+    --navbar-bg: #f0f0f0;
+    --navbar-text: #000000;
+}
+
+/* Dark Mode */
+.dark-mode {
+    --bg-color: #474646;
+    --text-color: #008A8A;
+    --navbar-bg: #575757;
+    --navbar-text: #008A8A;
+}
+
+/* Cyan/Black Mode */
+.cyan-black-mode {
+    --bg-color: #383838;
+    --text-color: #008A8A;
+    --navbar-bg: #000000;
+    --navbar-text: #008A8A;
+}
+
+/* Apply variables to body */
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+
+/* Navbar styles */
+.navbar {
+
+    color: var(--navbar-text);
+}
+
+.navbar a {
+    color: var(--navbar-text);
+}
+
+.navbar a:hover {
+    background-color: var(--accent-color);
+    color: var(--text-color);
+}
+
+/* Adjust other elements as needed */
+
+/* settings */
+
+/* Basic styling for the popup (Settings modal) */
+.popup {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+}
+
+/* Style for the popup content */
+.popup-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.popup h2 {
+    margin-bottom: 20px;
+}
+
+.popup button {
+    margin-top: 10px;
+}
