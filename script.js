@@ -52,7 +52,7 @@ let timerInterval;
 let currentScramble = ""; // Holds the active scramble for the solve
 let holdStartTime = 0; // Variable to track the start of the spacebar hold time
 let okButtonClicked = false; // Track if the OK button was clicked
-let holdTime = 500; // Default hold time threshold (in ms)
+let holdTime = 250; // Default hold time threshold (in ms)
 let scrambleDisplayed = false; // Track if scramble is displayed
 let spacebarPressed = false;  // Flag to track spacebar press state
 let spacebarPressDuration = 0;
