@@ -9,22 +9,23 @@
     top: 0;
     left: 0;
     width: 100%;
-    padding: 20px 65px;
+    padding: 0 65px; /* Changed from 20px 65px */
     background: lightblue;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    z-index: 100; 
+    z-index: 100;
+    height: 80px;
 }
 
 .logo {
-    text-decoration: none;
+    display: flex;
+    align-items: center;
+    height: 100%;
 }
 
 .logo-image {
-    max-width: 210px;
-    max-height: 90px;
-    width: auto;
+    width: 300px;
     height: auto;
     object-fit: contain;
 }
