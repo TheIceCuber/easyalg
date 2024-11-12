@@ -59,6 +59,9 @@ let spacebarPressDuration = 0;
 let spacebarPressStartTime = 0;
 let timerElement = document.getElementById('timerDisplay');
 let timerStartTimeout;
+let holdTimeReached = false;
+
+
 
 
 
@@ -136,29 +139,18 @@ document.getElementById('okButton').addEventListener('click', confirmSelection);
 
 
 function startTimer() {
-    console.log("startTimer called");
-    console.log("selectedCases:", document.querySelectorAll('.case-checkbox:checked').length);
-    console.log("okButtonClicked:", okButtonClicked);
-    console.log("scrambleDisplayed:", scrambleDisplayed);
-
     if (!timerRunning) {
-        const selectedCases = document.querySelectorAll('.case-checkbox:checked');
-        if (selectedCases.length > 0 && okButtonClicked && scrambleDisplayed) {
-            startTime = Date.now();
-            timerRunning = true;
-            document.getElementById('timerDisplay').style.color = 'yellow';
-            timerInterval = setInterval(() => {
-                const elapsed = Date.now() - startTime;
-                const seconds = (elapsed / 1000).toFixed(2);
-                document.getElementById('timerDisplay').textContent = seconds;
-            }, 10);
-            console.log("Timer started");
-        }
+        startTime = Date.now();
+        timerRunning = true;
+        timerInterval = setInterval(() => {
+            const elapsed = Date.now() - startTime;
+            const seconds = (elapsed / 1000).toFixed(2);
+            timerElement.textContent = seconds;
+        }, 10);
+        console.log("Timer started");
     }
 }
 
-
-// Function to stop the timer
 function stopTimer() {
     if (timerRunning) {
         clearInterval(timerInterval);
@@ -242,19 +234,24 @@ document.body.addEventListener('keydown', function (e) {
 
 // Event listeners
 document.body.addEventListener('keydown', function (e) {
-    if (e.code === 'Space' && !timerRunning) {
+    if (e.code === 'Space') {
         e.preventDefault();
-        if (!spacebarPressed) {
-            console.log("Spacebar pressed!");
-            spacebarPressed = true;
-            timerElement.style.color = 'yellow';
-            spacebarPressStartTime = Date.now();
-            
-            timerStartTimeout = setTimeout(() => {
-                if (spacebarPressed) {
-                    timerElement.style.color = 'green';
-                }
-            }, holdTime);
+        if (!timerRunning) {
+            if (!spacebarPressed) {
+                console.log("Spacebar pressed!");
+                spacebarPressed = true;
+                timerElement.style.color = 'yellow';
+                spacebarPressStartTime = Date.now();
+                
+                timerStartTimeout = setTimeout(() => {
+                    if (spacebarPressed) {
+                        timerElement.style.color = 'green';
+                        holdTimeReached = true;
+                    }
+                }, holdTime);
+            }
+        } else {
+            stopTimer();
         }
     }
 });
@@ -268,19 +265,19 @@ document.body.addEventListener('keyup', function (e) {
         spacebarPressDuration = Date.now() - spacebarPressStartTime;
         console.log(`Spacebar held for ${spacebarPressDuration} ms`);
         
-        if (timerRunning) {
-            stopTimer();
-        } else if (spacebarPressDuration >= holdTime) {
+        if (!timerRunning && holdTimeReached) {
             startTimer();
-        } else {
-            timerElement.style.color = ''; // Reset to default color
         }
         
         spacebarPressed = false;
         spacebarPressStartTime = 0;
+        holdTimeReached = false;
+        
+        if (!timerRunning) {
+            timerElement.style.color = ''; // Reset to default color
+        }
     }
 });
-
 
 
 // Listen for the OK button click
